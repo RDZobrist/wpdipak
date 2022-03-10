@@ -1,0 +1,3054 @@
+/*  
+Theme Name: Hansen AgriPLACEMENT
+Theme URI: http://hansenagriplacement.com
+Description: 
+Version: 1.0
+Author: Joseph Pender
+Author URI: http://vistacomm.com
+Tags: 
+*/
+
+@import 'scss/_normalize.scss';
+@import 'scss/_outdatedbrowser.scss';
+@import 'scss/_slick.scss';
+@import 'scss/_alertify.scss';
+@import 'scss/_datatables.scss';
+@import 'scss/_dynatable.scss';
+@import 'scss/_responsivetable.scss';
+@import 'scss/_notyf.scss';
+
+.clear{clear:both;}
+
+/*  End Reset */
+
+body{
+	font-size: 100%;
+}
+
+@font-face {
+    font-family: 'aleoregular';
+    src: url('./fonts/aleo_regular_macroman/Aleo-Regular-webfont.eot');
+    src: url('./fonts/aleo_regular_macroman/Aleo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/aleo_regular_macroman/Aleo-Regular-webfont.woff') format('woff'),
+         url('./fonts/aleo_regular_macroman/Aleo-Regular-webfont.ttf') format('truetype'),
+         url('./fonts/aleo_regular_macroman/Aleo-Regular-webfont.svg#aleoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aleobold';
+    src: url('./fonts/aleo_bold_macroman/Aleo-Bold-webfont.eot');
+    src: url('./fonts/aleo_bold_macroman/Aleo-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/aleo_bold_macroman/Aleo-Bold-webfont.woff') format('woff'),
+         url('./fonts/aleo_bold_macroman/Aleo-Bold-webfont.ttf') format('truetype'),
+         url('./fonts/aleo_bold_macroman/Aleo-Bold-webfont.svg#aleobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$headerfont: "bebas-neue", sans-serif;
+$bodyfont: "proxima-nova", sans-serif;
+$navregularfont: 'aleoregular';
+$navboldfont: 'aleobold';
+
+$siteGray1: #363234;
+$siteGray2: #b2b2b2;
+$siteGray3: #efefef;
+$siteTextColor: #3d3d3d;
+$siteGreen1: #8fbb62;
+$siteRed1: #dd3839;
+$siteRed2: #89261B;
+$siteDarkRed1: #282218;
+
+.clear{
+    clear:both;
+}
+
+.hidden {
+    display: none!important;
+}
+
+body{
+    font-family: $bodyfont;
+}
+
+.button{
+    background-color: $siteDarkRed1;
+    color:#fff !important;
+    outline: none;
+    border:0;
+    font-size: 1.125em;
+    text-align: center;
+    display: inline-block;
+    height: 37px;
+    line-height: 37px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-family: $navregularfont;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color:$siteRed2;
+}
+
+input[type=text], textarea{
+    border:2px solid $siteDarkRed1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
+    border:2px solid $siteRed1 !important;
+}
+
+#modalcontainer{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 1000;
+    background-color: rgba(137, 38, 27, 0.83);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    #modalcontainerwrapper{
+        position: relative;
+        padding:10px;
+        width: 85%;
+        height: 85%;
+        max-width: 450px;
+        height: 600px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        
+        #btn_modalclose{
+            position: absolute;
+            top:0;
+            right:0;
+            width:42px;
+            height:42px;
+            text-align: center;
+            line-height: 42px;
+            font-style: 1.3em;
+            color: $siteRed1;
+            cursor: pointer;
+        }
+        
+        .content{
+            h1{
+                text-align: center;
+                font-family: $headerfont;
+                color:$siteRed2;
+                font-size: 2.2em;
+            }
+            
+            p{
+                width:90%;
+                margin:auto;
+            }
+            
+            form{
+                margin-top:20px;
+                opacity: 1;
+                transition: all 0.3s ease;
+                
+                .loading{
+                    position: absolute;
+                    width:100%;
+                    height: 100%;
+                    top:0;
+                    left:0;
+                    background-image: url('./images/loading.gif');
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: 50px auto;
+                    background-color: rgba(221, 56, 57, 0.5);
+                    opacity: 1;
+                    z-index: 1000000;
+                }
+                
+                .formrow{
+                    width:90%;
+                    margin:auto;
+                    margin-bottom:20px;
+                    
+                    input, textarea{
+                        width:100%;
+                        padding:5px;
+                        box-sizing: border-box;
+                        -webkit-appearance: none;
+                        border-radius: 0;
+                    }
+                    
+                    textarea{
+                        height: 200px;
+                    }
+                    
+                    .button{
+                        line-height: 28px;
+                    }
+                }
+            }
+            
+            form.active{
+                opacity: 0.4;
+                user-select: none;
+            }
+        }
+    }
+}
+
+#wrapper{
+    > header.main{
+        position: relative;
+        height: 122px;
+        background-color: #fff;
+
+        h1#logo{
+            width:166px;
+            margin:0;
+            position: absolute;
+            top:20px;
+            left:20px;
+
+            img{
+                width:100%;
+                height: auto;
+            }
+        }
+
+        .innerwrapper{
+            .login{
+                display: none;
+            }
+            a.phone {
+                display: none;
+                padding-bottom: 15px;
+                text-decoration: none;
+                color: #3d3d3d;
+            }
+        }
+
+        #signinbtn, #accountbtn{
+            display: none;
+        }
+
+        #mobilemenubtn{
+            display: block;
+            width:95px;
+            height: 123px;
+            line-height: 130px;
+            text-align: center;
+            position: absolute;
+            top:0;
+            right:0;
+            cursor: pointer;
+
+            span.label{
+                display: none;
+            }
+        }
+
+        #mobilemenubtn.active{
+            background-color: $siteRed1;
+
+            color:#fff;
+
+            svg{
+                path{
+                    fill: #fff;
+                }
+            }
+        }
+
+        nav.main{
+            display: none;
+        }
+
+        nav.main.active{
+            display: block;
+            position: absolute;
+            box-sizing: border-box;
+            top:122px;
+            width:100%;
+            background-color: $siteRed1;
+            padding:30px;
+            z-index: 100000;
+
+            font-size: 1.5em;
+            font-family: $navregularfont;
+            text-transform: uppercase;
+
+            ul{
+                margin:0;
+                padding: 0;
+                list-style: none;
+                margin-bottom: 32px;
+
+
+                li{
+                    margin-bottom: 25px;
+
+                    a, span{
+                        color:#fff;
+                        text-decoration: none;
+                        letter-spacing: 1px;
+                    }
+
+                    ul.sf-submenu{
+                        margin-left:25px;
+                        margin-top: 25px;
+                        margin-bottom: 45px;
+
+                        font-size: 0.85em;
+                    }
+                }
+
+                li:last-of-type{
+                    margin-bottom: 0;
+                }
+            }
+
+            a.button{
+                display: block;
+                font-size: 0.75em;
+            }
+
+            a.phone{
+                display: block;
+                color:#fff;
+                text-decoration: none;
+                margin-bottom: 32px;
+            }
+
+            .account{
+                display: block;
+                border-top:1px solid white;
+                padding-top:30px;
+                margin-top: 35px;
+
+                #accountdashboard{
+                    .dashboardsection{
+                        margin-bottom: 20px;
+                        
+                        
+                        
+                        table{
+                            width:100%;
+                        }
+
+
+                        h1{
+                            color:#fff;
+                            font-size: 1em;
+                            text-transform: none;
+                        }
+                        
+                        
+
+                        #application_status, .skillsheet, .noresults{
+                            font-family: $bodyfont;
+                            font-size:0.66em;
+                            color:#fff;
+                            height: 42px;
+                            margin-bottom: 20px;
+                            cursor: pointer;
+
+
+                            > a{
+                                display: block;
+                                text-decoration: none;
+                                color:#fff;
+                                height: 42px;
+                            }
+
+                            .application_details, .skillsheet_detail{
+                                display: inline-block;
+                                width:78%;
+                                text-transform: none;
+                                color:#fff;
+                            }
+
+                            img{
+                                float:left;
+                                margin-right: 10px;
+                            }
+
+                            span{
+                                float:right;
+                                font-weight: bold;
+                            }
+
+                            span.clear{
+                                clear:both;
+                            }
+
+                            .progressbartrack{
+                                height: 7px;
+                                background-color: rgba(255,255,255,0.4);
+                                width:100%;
+                                margin-top: 5px;
+
+                                .progressbar{
+                                    background-color: #fff;
+                                    height: 7px;
+                                    display: inline-block;
+                                    float:left;
+                                }
+                            }
+
+                        }
+                        
+                        .noresults{
+                            text-transform: none;
+                            cursor: default;
+                        }
+                        
+                        
+                    }
+
+                    #account_controls{
+                        margin-top: 35px;
+                        a.button{
+                            margin-bottom: 10px;
+                            text-decoration: none;
+                        }
+
+                        a.altbutton{
+                            background-color: $siteRed2;
+                        }
+                    }
+                }
+            }
+
+            .login{
+                display: none;
+                
+                .invalidPwd{
+                    padding:5px;
+                    background-color: #fff;
+                    color: $siteRed2;
+                    text-align: center;
+                    font-size:0.75em;
+                    display: block;
+                    margin-bottom: 12px;
+                }
+
+                #loginform{
+                    position: relative;
+                    font-size: 0.75em;
+                    width:100%;
+                    margin:auto;
+                    padding-top:20px;  
+                    
+                    .loading{
+                        display: block;
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(221, 56, 57, 0.67);
+                        background-image: url('./images/loading.gif');
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                    }
+                    
+
+                    .formrow{
+                        margin-bottom: 25px;
+                        label{
+                            color:#fff;
+                            text-transform: uppercase;
+                            display: block;
+                            margin-bottom: 10px;
+                            letter-spacing: 1.3px;
+                        }
+
+                        a{
+                            font-size: 0.77em;
+                            text-decoration: none;
+                            color:#fff;
+                            font-family: $bodyfont;
+                        }
+
+                        .button{
+                            width:100%;
+                            font-size: 1em;
+                            margin-bottom: 12px;
+                            font-family: $navregularfont;
+                            -webkit-appearance: none;
+                            border-radius: 0;
+                        }
+
+                        input[type=text], input[type=password]{
+                            outline: none;
+                            border:0;
+                            height: 40px;
+                            width:100%;
+                            padding:6px;
+                            box-sizing: border-box;
+                            -webkit-appearance: none;
+                            border-radius: 0;
+                        }
+                    }
+
+                    .formrow.links{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+    }
+
+    #frontpage{
+        #heroimage{
+            position: relative;
+            height: 386px;
+            width:100%;            
+
+            .overlay{
+                position: absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height: 100%;
+
+                background-color: rgba(255,255,255, 0.25);
+                z-index: 1000;
+
+                h2{
+                    margin:0;
+                    padding:0;
+                    margin-top: 32px;
+                    text-align: center;
+
+                    img{
+                        width:304px;
+                        height: auto;
+                    }                    
+                }
+                
+               
+
+                h3{
+                    text-align: center;
+                    font-size: 1.125em;
+                    font-family: $navboldfont;
+                    font-weight: normal;
+                    margin:0;
+                    text-transform: uppercase;
+                    color:$siteDarkRed1;
+                    margin-bottom: 50px;
+
+                    img{
+                        margin-right:9px;
+                        position: relative;
+                        top:-3px;
+                    }
+
+                    img.reversed{
+                        margin-left:9px;
+                        transform: rotate(180deg);
+                        margin-right:0;
+                    }
+                }
+
+                a.button{
+                    display: block;
+                    width:75%;
+                    margin:auto;
+                    margin-bottom: 18px;
+                    max-width: 250px;
+                }
+
+            }
+
+            .slider{
+                position: relative;
+                height: 386px;
+                opacity: 0;
+
+                div{                    
+                    height: 386px;
+                }
+                img{
+                    width:auto;
+                    height: auto;
+                }
+            }
+
+            .slider.slick-initialized {
+                opacity: 1;
+            }
+        }
+
+        #intro{
+            background: #fff;
+            .innerwrapper{
+                padding:10px;
+                padding-top:31px;
+                > h1{
+                    font-size: 2em;
+                    font-family: $headerfont;
+                    font-weight: normal;
+                    margin:0;
+                    padding:0;
+                    text-align: center;
+                    line-height: 1.1em;
+                    text-transform: uppercase;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    border-top:1px solid $siteGray2;
+                    border-bottom:1px solid $siteGray2;
+                    margin-bottom: 25px;
+                    color:$siteGray1;
+                    letter-spacing: 1px;
+
+                }
+
+                .content{
+                    color:$siteTextColor;
+                    line-height: 1.4em;
+                    border-bottom:1px solid $siteGray2;
+                    padding-left:10px;
+                    padding-right:10px;
+                    padding-bottom: 5px;
+                    margin-bottom: 25px;
+
+                    img{
+                        display: block;
+                        margin: auto;
+                        width:122px;
+                        height: auto;
+                        margin-bottom: 15px;
+                        margin-right: 25px;
+                    }
+                }
+
+                .socialmedia{
+                    font-size: 1.25em;
+                    text-align: center;
+                    color:$siteTextColor;
+
+                    ul{
+                        margin:0;
+                        padding:0;
+                        list-style: none;
+                        width:200px;
+                        margin:auto;
+                        margin-top: 12px;
+                        margin-bottom: 12px;
+
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                }
+            }
+        }
+
+        .largebackground{
+            background-color: $siteGreen1;
+            background-image: url('./images/homepage_bg.jpg');
+            background-position: top center;
+            background-size: cover;
+        }
+
+        #featuredjobs{
+            min-height: 800px;
+            padding-bottom: 50px;
+
+            .innerwrapper{
+                padding-top: 50px;
+
+                > h1{
+                    font-size: 2.375em;
+                    font-family: $headerfont;
+                    font-weight: normal;
+                    margin:0;
+                    padding:0;
+                    text-align: center;
+                    line-height: 1.1em;
+                    text-transform: uppercase;
+                    color:#fff;
+                    margin-bottom: 45px;
+                    letter-spacing: 1px;
+                }
+                
+                table{
+                    display: none;
+                }
+                
+                .calltoaction{
+                    width:90%;
+                    margin:auto;
+                    
+                    a{
+                        display: block;
+                        margin-bottom: 10px;
+                    }
+                }
+                
+                .mobilelisting{
+                    display: block;
+                    width:88%;
+                    margin:auto;
+                    background-color: $siteDarkRed1;
+                    color: #fff;
+                    margin-bottom: 22px;
+                    
+                    header.main{
+                        background-color: transparent;
+                        padding:11px;
+                        display: flex;
+                        justify-content: flex-start;
+                        
+                        .jobid{
+                            font-family: $navregularfont;
+                            text-transform: uppercase;
+                            margin-right:30px;
+                        }
+                        
+                        h1{
+                            margin:0;
+                            padding:0;
+                            font-size: 1em;
+                            color: #fff;
+                            font-family: $bodyfont;
+                            font-weight: normal;
+                            text-align: left;
+                            
+                            a{
+                                text-decoration: none;
+                                color: #fff;
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                    table{
+                        display: table;
+                        width:100%;        
+                        outline: none;
+                        border:0;
+                                        
+                        tr{
+                            td{
+                                padding:11px;
+                            }
+                            
+                            td:nth-child(1){
+                                font-family: $navregularfont;
+                                text-transform: uppercase;
+                            }
+                            
+                            
+                            
+                            td:nth-child(2){
+                                background-color: #fff;
+                                color: $siteTextColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #featuredcandidates{
+            background-color: #fff;
+            .innerwrapper{
+                padding-top: 32px;
+
+                > h1{
+                    font-size: 2em;
+                    font-family: $headerfont;
+                    font-weight: normal;
+                    margin:0;
+                    padding:10px 0;
+                    text-align: center;
+                    line-height: 1.1em;
+                    text-transform: uppercase;
+                    color: $siteGray1;
+                    letter-spacing: 1px;
+                    width:100%;
+                    max-width: 1002px;
+                    margin:auto;
+                    margin-bottom: 25px;
+                    border-top: 1px solid #b2b2b2;
+                    border-bottom: 1px solid #b2b2b2;
+                }
+
+                .content{
+                    color:$siteTextColor;
+                    line-height: 1.4em;
+                    padding-left:20px;
+                    padding-right:20px;
+                    padding-bottom: 35px;
+                    margin-bottom: 25px;
+
+                    img{
+                        display: block;
+                        margin: auto;
+                        margin-bottom: 25px;
+                    }
+
+                    a.button{
+                        display: block;
+                        width:100%;
+                        font-size: 0.88em;
+                        margin-top:15px;
+                    }
+                }
+            }
+        }
+
+        #psalms{
+            padding-bottom: 18px;
+
+            > h1{
+                font-size: 1.875em;
+                color:#fff;
+                text-transform: uppercase;
+                font-family: $headerfont;
+                line-height: 1.1em;
+                text-align: center;
+                font-weight: normal;
+                padding-top:44px;
+                margin-bottom: 32px;
+                letter-spacing: 1px;
+                width:90%;
+                margin:auto;
+            }
+
+            h2{
+                font-size: 1.125em;
+                color:#fff;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: normal;
+            }
+
+            .desc{
+                padding:12px;
+                text-align: center;
+                font-size: 1em;
+                color:#fff;
+                font-family: $navregularfont;
+
+            }
+        }
+    }
+
+    #subpage{
+        article.page{
+            > header{
+                height: 150px;
+                width: 100%;
+                background-color: $siteGreen1;
+                position: relative;
+
+                background-image: url('./images/hansen_subheroimage_default.jpg');
+                background-position: top center;
+
+                .overlay{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height: 100%;
+                    background-color: rgba(255,255,255,0.7);
+                    z-index: 100;
+                }
+
+                h1{
+                    position: absolute;
+                    bottom:50px;
+                    width:100%;
+                    text-align: center;
+                    font-size: 1.85em;
+                    font-family: $navregularfont;
+                    font-weight: normal;
+                    color:$siteGray1;
+                    margin:0;
+                }
+            }
+
+            .innerwrapper{
+                padding:30px;
+
+                > .content{
+                    border-top:1px solid $siteTextColor;
+                    padding-top:30px;
+                    border-bottom:1px solid $siteTextColor;
+                    padding-bottom:30px;
+
+                    font-size: 1.125em;
+                    color:$siteTextColor;
+                    line-height: 1.3em;
+                    margin-bottom: 40px;
+
+                    h1, h2, h3{
+                        font-family: $headerfont;
+                        letter-spacing: 1px;
+                        font-weight: normal;
+                        line-height: 1em;
+                        
+                    }
+                    
+                    a{
+                        color:$siteRed1;
+                        text-decoration: none;
+                    }
+
+                    a.button{
+                        display:block;
+                        width: 100%;
+                        margin-bottom: 6px;
+                        font-size: 0.875em;
+                    }
+                    
+                    .joblisting{
+                        margin-top:30px;
+                        
+                        > select{
+                            margin:auto;
+                            margin-bottom:25px;
+                            display: block;
+                            
+                        }
+
+                        .dynatable-search{
+                            float:none;
+                            width: 100%;
+                            display: block;
+
+                            input{
+                                display: block;
+                                width: 100%;
+                            }
+                        }
+
+                        .dynatable-per-page{display: none;}
+
+                        .dynatable-record-count{
+                            margin-top: 25px;
+                        }
+
+                        .dynatable-pagination-links{
+                            margin:0;
+                            padding:0;
+                            margin:auto;
+                            display: block;
+                            margin-top: 25px;
+                            width: 100%;
+                            float: none;
+                            text-align: center;
+
+                            > li:nth-child(1){
+                                display: none;
+                            }
+
+                            li{
+                                margin-right:10px;
+                                a{
+                                    cursor: pointer;
+                                }
+                            }
+
+                            li:last-of-type{
+                                margin-right:0;
+                            }
+
+                            li.dynatable-disabled-page {
+                                a{
+                                    border: 1px solid $siteDarkRed1;
+                                    opacity: 0.5;
+                                }
+                            }
+                            
+                            li.dynatable-active-page{
+                                a{
+                                    background-color: $siteDarkRed1;
+                                    color: #fff;
+                                    border-radius: 0;
+                                }
+                            }
+                        }
+                        
+                        .dataTables_filter{
+                            margin-bottom:15px;
+                        }
+
+                        .dynatable-record-count{
+                            text-align: center;
+                            font-size: 0.875em;
+                        }
+                        
+                        table{
+                            thead{
+                                background-color: $siteDarkRed1;
+                                tr{
+                                    th{
+                                        height:25px;
+                                        background-color: $siteDarkRed1;
+                                        color: #fff;
+                                        font-family: $navregularfont;
+                                        text-transform: uppercase;
+                                        text-align: left;
+                                        padding:7px;
+                                        padding-left:10px;
+                                        font-weight: normal;
+                                        font-size: 0.85em;
+                                        a{
+                                            color: #fff;
+                                        }
+                                    }
+                                }
+                            }                            
+                            tr.featuredjob{
+                                background-color: $siteRed1;
+                                
+                                td{
+                                    a{
+                                        color: #fff;
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                        }
+
+                        .table-wrapper{
+                            .scrollable{
+                                table{
+                                    thead{
+                                        tr{
+                                            th:nth-child(2){
+                                                display: none !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .pinned{
+                                background-color: $siteDarkRed1;
+                                color: #fff;
+
+                                table{
+                                    thead{
+                                        tr{
+                                            th:nth-child(2){
+                                                display: table-cell !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    #jobdetails{
+                        h1{
+                            font-family: $navboldfont; 
+                            line-height: 1em;
+                            font-size:1em;
+                            text-transform: none;
+                            color:$siteDarkRed1;
+                            margin:0;
+                            margin-bottom: 20px;
+                        }
+
+                        #jobid{
+                            //float:right;
+                            font-size:1em;
+                        }
+                        
+                        #referenceid{
+                            color:#000;
+                            font-size:0.85em;
+                            margin-bottom: 20px;
+                            //float:right;
+                        }
+                        
+                        
+                        .desc{
+                            margin-bottom: 15px;
+
+                            p, span{
+                                font-family:$bodyfont !important;
+                            }
+                            span{
+                                font-size: 18px !important;
+                            }
+                        }
+                        
+                        .calltoaction{                            
+                            margin:auto;
+                            margin-top:25px;
+                            a{
+                                font-size:1em;
+                                display: block;
+                                padding:5px;
+                                padding-left:20px;
+                                padding-right:20px;
+                                margin-bottom: 10px;                                
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
+                    #myaccount{
+                        position: relative;
+
+                        .loading{
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(255, 255, 255, 0.99);
+                            background-image: url('images/ajax-loader.gif');
+                            background-repeat: no-repeat;
+                            background-position: top center;
+                            z-index: 100000;
+                        }
+
+                        .dashboardsection{
+                            margin-bottom: 40px;
+
+
+                            h1{
+                                color:$siteDarkRed1;
+                                font-size: 1.45em;
+                                text-transform: none;
+                                font-family: $navboldfont;
+                            }
+                            
+                            #applicant_details{
+                                a.button{
+                                    font-size: 1em;
+                                    height: auto;  
+                                    line-height: 1.2em;
+                                    padding:10px;                              
+                                }
+                            }
+                            
+                            #application_newapp{
+                                a{
+                                    display: block;
+                                    text-align: left;
+                                    background-color: $siteDarkRed1;
+                                    color:#fff;
+                                    padding:10px;
+                                    text-decoration: none;
+                                    line-height: 1em;
+                                    
+                                    strong{
+                                        line-height: 1em;
+                                    }
+                                    
+                                    span{
+                                        display: block;
+                                        padding-top:25px;
+                                        text-align: center;
+                                    }
+                                    
+                                    .fa{
+                                        font-size: 2em;
+                                        float:left;
+                                        margin-right:10px;
+                                        position: relative;
+                                        top:1px;
+                                    }
+                                }
+                            }
+
+                            #application_status, .skillsheet{
+                                font-family: $bodyfont;
+                                font-size:1em;
+                                color:$siteDarkRed1;
+                                height: 42px;
+                                margin-bottom: 20px;
+                                cursor: pointer;
+
+
+                                > a{
+                                    display: block;
+                                    text-decoration: none;
+                                    color:$siteDarkRed1;
+                                    height: 42px;
+                                }
+
+                                .application_details, .skillsheet_detail{
+                                    display: inline-block;
+                                    width:78%;
+                                    text-transform: none;
+                                    color:$siteDarkRed1;
+                                }
+
+                                img{
+                                    float:left;
+                                    margin-right: 10px;
+                                }
+
+                                span{
+                                    float:right;
+                                    font-weight: bold;
+                                }
+
+                                span.clear{
+                                    clear:both;
+                                }
+
+                                .progressbartrack{
+                                    height: 7px;
+                                    background-color: rgba(198, 198, 198, 0.6);
+                                    width:100%;
+                                    margin-top: 5px;
+
+                                    .progressbar{
+                                        background-color: $siteGray2;
+                                        height: 7px;
+                                        display: inline-block;
+                                        float:left;
+                                    }
+                                }
+
+                            }
+                        }
+                        
+                        #appliedjobs, #pastjobs{
+                            table{
+                                width:100%;
+                                display: table;
+                                background-color: #fff;
+                                box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+                                
+                                thead{
+                                    tr{
+                                        th{
+                                            height:25px;
+                                            background-color: $siteDarkRed1;
+                                            color: #fff;
+                                            font-family: $navregularfont;
+                                            text-transform: uppercase;
+                                            text-align: left;
+                                            padding:7px;
+                                            font-size: 0.9em;
+                                            padding-left:25px;
+                                            font-weight: normal;
+                                        }
+                                    }
+                                }
+                                
+                                tbody{
+                                    tr{
+                                        td{
+                                            height: 25px;
+                                            color: $siteGray1;
+                                            padding:7px;
+                                            padding-left:25px;
+                                            
+                                            a{
+                                                color:$siteRed1;
+                                                text-decoration: underline;
+                                                cursor: pointer;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #thankyou_registered{
+                        > h1{
+                            font-family: $navregularfont;
+                            color:$siteGray1;
+                            line-height: 1.1em;
+                            text-align: center;
+                            font-size: 1.4em;
+                        }
+                    }
+                    
+                    #application_jobs{
+                        display: block;
+                        background-color: $siteRed1;
+                        padding:15px;
+                        color:#fff;
+                        font-size:0.85em;
+                        margin-bottom: 25px;
+                        line-height: 1.2em;
+                        
+                        h1{
+                            font-size:1.56em;
+                            color:#fff;
+                        }
+                    }
+                    
+                    #joborderform_app{
+                        margin-top:50px;
+                    }
+
+
+                    #application_app, #skillsheet_app, #joborderform_app{
+                        position: relative;
+                        #breadcrumbs{
+                            height: 60px;
+                            background-color: $siteRed1;
+                            color: #fff;
+                            margin-bottom: 35px;
+                            line-height: 61px;
+
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .currentactivepage{
+                                text-align: center;
+                                height: 61px;
+                                font-family: $navregularfont;
+                                font-size: 1.2em;
+                                line-height: 61px;
+                                width:100%;
+                            }
+
+                            .button{
+                                display: none;
+                            }
+                            nav{
+                                display: none;
+                            }
+                        }
+                        
+                        .loading{
+                            position: absolute;
+                            width:100%;
+                            height: 100%;
+                            top:0;
+                            left:0;
+                            background-image: url('./images/loading.gif');
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            background-size: 50px auto;
+                            background-color: rgba(255, 255, 255, 0.5);
+                            opacity: 1;
+                            z-index: 1000;
+                        }
+
+                        #application_pages{                            
+                            > section{
+                                
+                                > header{
+                                    margin-bottom: 20px;
+                                    h1{
+                                        font-family: $navregularfont;
+                                        text-align: center;
+                                        line-height: 1.1em;
+                                        color:$siteDarkRed1;
+                                    }
+                                }
+                                .formwrapper{
+
+                                    .button{
+                                        display: block;
+                                        width:100%;
+                                    }
+
+
+                                    .formrow{
+                                        margin-bottom: 20px;
+                                        label{
+                                            font-weight: bold;
+                                            font-size: 0.85em;
+                                            display: block;
+                                            margin-bottom: 8px;
+                                            line-height: 1.2em;
+                                        }
+                                        input[type=text], input[type=email]{
+                                            width:100%;
+                                            box-sizing: border-box;
+                                            padding:6px;
+                                            -webkit-appearance: none;
+                                            border-radius: 0;
+                                            border:1px solid $siteGray1;
+                                        }
+                                        
+                                        input.parsley-error, textarea.parsley-error, .form-input-hint{
+                                            border-color: red;
+                                            border-top:2px solid red;
+                                            color: red;
+                                            margin-top: 0;
+                                            padding-top:3px;
+                                            text-transform: uppercase;
+                                        }
+
+                                        input[type=file]{
+                                            width:100%;
+                                            padding:10px;
+                                            box-sizing: border-box;
+                                            border:1px solid $siteGray2;
+                                        }
+
+                                        .radioGroup{
+                                            display: inline-block;
+                                            margin-right: 10px;
+                                            font-weight: bold;
+                                        }
+
+                                        select{
+                                            width:100%;
+                                            border:1px solid $siteGray1;
+                                        }
+
+                                        textarea{
+                                            width:100%;
+                                            min-height: 150px;
+                                            -webkit-appearance: none;
+                                            border-radius: 0;
+                                            box-sizing: border-box;
+                                        }
+                                        
+                                        .listoptions{
+                                            font-size: 0.75em;
+                                            
+                                            a{
+                                                cursor:pointer;
+                                            }
+                                        }
+                                        
+                                        .list{
+                                            border:1px solid $siteGray1;
+                                            list-style: none;
+                                            margin-left:0;
+                                            padding-left:0;
+                                            height: 200px;
+                                            overflow: scroll;
+                                            padding:10px;
+                                            margin-top:0;
+                                        }
+                                        
+                                        .parsley-errors-list{
+                                            margin:0;
+                                            list-style: none;
+                                            padding:0;
+                                            color: red;
+                                            font-size: 0.75em;
+                                            text-transform: uppercase;
+                                        }
+                                    }
+
+                                    .moreeducation, .moreworkhistory{
+                                        .education, .workhistory{
+                                            position: relative;
+                                            > h2{
+                                                color: $siteRed1;
+                                                border-bottom: 1px solid $siteRed1;
+                                                padding-bottom: 10px;
+                                            }
+
+                                            .delete_btn{
+                                                position: absolute;
+                                                top:0;
+                                                right:0;
+                                                color:red;
+                                                cursor: pointer;
+                                                font-size: 1.2em;
+                                            }
+                                        }
+
+                                        .workhistory:nth-child(1){
+                                            .delete_btn{display: none;}
+                                        }
+                                    }
+                                }
+
+                                .application_completion{
+                                    padding:20px;
+                                    background-color: $siteRed1;
+                                    margin-top: 30px;
+                                    color:#fff;
+
+                                    p{
+                                        text-align: center;
+                                    }
+
+                                    h2{
+                                        color:#fff;
+                                        text-align: center;
+                                        font-size: 2em;
+                                        line-height: 1em;
+                                    }
+
+                                    input[type=text]{
+                                        display: block;
+                                        width:40%;
+                                        margin:auto;
+                                        margin-bottom: 25px;
+                                        margin-top: 25px;
+                                        font-size: 1.2em;
+                                        color:$siteGray1;
+
+                                    }
+
+                                    a.button{
+                                        display: block;
+                                        padding:10px;
+                                        height: auto;
+                                        text-align: center;
+                                        font-size: 1.1em;
+                                        line-height: 1em;
+                                    }
+                                }
+                            }
+
+                            section.active{
+                                display: block;
+                            }
+                        }
+
+                        #application_controls{
+                            position: fixed;
+                            bottom:0;
+                            left:0;
+                            right:0;
+                            width:100%;
+                            height: 65px;
+                            z-index: 1000;
+                            background-color: $siteRed1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            vertical-align: middle;
+
+                            button:nth-child(1){
+                                margin-left: 10px;
+                            }
+
+                            button{
+                                font-size: 0.85em;
+                                margin-right: 10px;
+                                line-height: 34px;
+                            }
+
+                            button:last-of-type{
+                                margin-right:0;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+
+                    #skillsheet_app{
+                        #application_pages{
+                            > section{
+                                .skillsheets{
+                                    .formwrapper{
+                                        > h2{
+                                            color: $siteDarkRed1;
+                                            font-size: 1.8em;
+                                            margin-bottom: 10px;
+                                            padding-bottom: 10px;
+                                            border-bottom: 1px solid $siteDarkRed1;
+                                        }
+                                    }
+                                }
+                                .formwrapper{
+                                    margin-bottom: 65px;
+                                    .otherskills_container{
+                                        .otherskill{
+                                            position: relative;
+                                            margin-bottom: 30px;
+                                            padding-bottom: 0;
+                                            border-bottom: 1px solid $siteGray2;
+
+                                            .delete_btn{
+                                                color:$siteRed1;
+                                                position: absolute;
+                                                top:-5px;
+                                                right:0;
+                                                cursor: pointer;
+                                            }
+                                        }
+
+                                        .otherskill:last-of-type{
+                                            padding-bottom: 0;
+                                            border-bottom: 0;
+
+                                        }
+                                    }
+
+                                    .formrow{
+                                        p{
+                                            margin-top: 0;
+                                            padding-top:0;
+                                            font-size: 0.86em;
+                                            line-height: 1.2em;
+                                        }
+                                    }
+                                    .row{
+                                        margin-bottom: 20px;
+                                        padding-top: 20px;
+                                        border-top: 1px solid $siteGray2;
+                                        .formrow{
+                                            margin-bottom: 0;
+                                            label{
+                                                min-width: 150px;
+                                                display: block;
+                                                font-weight: bold;
+                                                margin-bottom: 5px;
+                                            }
+
+
+
+                                            .radioGroup{
+                                                margin-right: 10px;
+
+                                                input[type=radio]{
+                                                    width:20px;
+                                                    height: 20px;
+                                                    vertical-align: middle;
+                                                }
+                                            }
+
+                                            .radioGroup:last-of-type{
+                                                margin-right: 0;
+                                            }
+                                        }
+                                    }
+
+                                    .row:nth-child(2){
+                                        border-top:0;
+                                    }
+
+                                    .row.relatedtop{
+                                        padding-top:0;
+                                        border-top:0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    #loginform{
+                        > h1{
+                            font-family: $navregularfont;
+                            color:$siteGray1;
+                            line-height: 1.1em;
+                            margin:0;
+                            margin-bottom: 25px;
+                        }
+
+                        .loading{
+                            position: absolute;
+                            width:100%;
+                            height: 100%;
+                            top:0;
+                            left:0;
+                            background-image: url('./images/loading.gif');
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            background-size: 50px auto;
+                            background-color: rgba(221, 56, 57, 0.5);
+                            opacity: 1;
+                            z-index: 1000000;
+                        }
+
+                        .form{
+                            .formrow{
+                                margin-bottom: 25px;
+                                label{
+                                    color:$siteGray1;
+                                    display: block;
+                                    margin-bottom: 7px;
+                                }
+
+                                a{
+                                    font-size: 0.77em;
+                                    text-decoration: none;
+                                    color:#fff;
+                                    font-family: $bodyfont;
+                                }
+
+                                .button{
+                                    width:100%;
+                                    font-size: 1em;
+                                    margin-bottom: 12px;
+                                    font-family: $navregularfont;
+                                }
+
+                                input[type=text], input[type=password], input[type=email]{
+                                    outline: none;
+                                    border:2px solid $siteDarkRed1;
+                                    height: 40px;
+                                    width:100%;
+                                    padding:6px;
+                                    box-sizing: border-box;
+                                }
+                                
+                                                              
+
+                                .button_strength{
+                                    color:$siteGray2;
+                                }
+
+                                .strength_meter{
+                                    float: right;
+                                    font-size: 0.8em;
+                                }
+                                
+                                input[type=submit]{
+                                    max-width: 340px;
+                                    line-height: 34px;
+                                }
+                            }
+                            
+                            .formrow.buttons{
+                                input[type=submit]{
+                                    display: block;
+                                    max-width: none !important;
+                                }
+                            }  
+
+                            .formrow.invalid{
+                                input[type=text], input[type=password], input[type=email]{
+                                    border:2px solid $siteRed1;
+                                }
+
+                                small{
+                                    font-size: 0.75em;
+                                    color:$siteRed1;
+                                }
+                            }
+                        }
+                    }
+
+                    #register, #forgotpassword{
+                        position: relative;
+                        padding:20px;
+                        padding-top:0;
+
+                        #registerform, #forgotpasswordform{
+                            > h1{
+                                font-family: $navregularfont;
+                                color:$siteGray1;
+                                line-height: 1.1em;
+                                margin:0;
+                                margin-bottom: 25px;
+                            }
+
+                            .loading{
+                                position: absolute;
+                                width:100%;
+                                height: 100%;
+                                top:0;
+                                left:0;
+                                background-image: url('./images/loading.gif');
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                background-size: 50px auto;
+                                background-color: rgba(221, 56, 57, 0.5);
+                                opacity: 1;
+                                z-index: 1000000;
+                            }
+
+                            .form{
+                                .formrow{
+                                    margin-bottom: 25px;
+                                    label{
+                                        color:$siteGray1;
+                                        display: block;
+                                        margin-bottom: 7px;
+                                    }
+
+                                    a{
+                                        font-size: 0.77em;
+                                        text-decoration: none;
+                                        color:#fff;
+                                        font-family: $bodyfont;
+                                    }
+
+                                    .button{
+                                        width:100%;
+                                        font-size: 1em;
+                                        margin-bottom: 12px;
+                                        font-family: $navregularfont;
+                                    }
+
+                                    input[type=text], input[type=password], input[type=email]{
+                                        outline: none;
+                                        border:2px solid $siteDarkRed1;
+                                        height: 40px;
+                                        width:100%;
+                                        padding:6px;
+                                        box-sizing: border-box;
+                                    }
+
+                                    .button_strength{
+                                        color:$siteGray2;
+                                    }
+
+                                    .strength_meter{
+                                        float: right;
+                                        font-size: 0.8em;
+                                    }
+                                    
+                                    input[type=submit]{
+                                        max-width: 340px;
+                                        line-height: 34px;
+                                    }
+                                }
+                                
+                                
+
+                                .formrow.invalid{
+                                    input[type=text], input[type=password], input[type=email]{
+                                        border:2px solid $siteRed1;
+                                    }
+
+                                    small{
+                                        font-size: 0.75em;
+                                        color:$siteRed1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #sidebar{
+                    #latestjobs, #latestcandidates{
+                        padding:22px;
+                        max-width: 300px;
+                        margin:auto;
+                        margin-bottom: 23px;
+                        border:1px solid $siteTextColor;
+                        > h1{
+                            font-size: 2em;
+                            font-weight: normal;
+                            font-family: $headerfont;
+                            color: $siteTextColor;
+                            margin:0;
+                            letter-spacing: 1px;
+                            position: relative;
+                            margin-bottom: 23px;
+
+                            svg{
+                                position: absolute;
+                                top:11px;
+                                right:0;
+                            }
+                        }
+
+                        .content{
+
+                            ul{
+                                margin-left:5px;
+                                padding-left:15px;
+                                margin-bottom: 25px;
+                                list-style: circle;
+
+                                li{
+                                    margin-bottom: 10px;
+
+                                    a{
+                                        text-decoration: none;
+                                        color:$siteDarkRed1;
+                                        
+                                        i{
+                                            padding-right:10px;
+                                        }
+                                    }
+                                }
+                                
+                                li.featuredjob{
+                                    a{
+                                        font-weight: bold;
+                                        color:$siteRed1;
+                                    }
+                                }
+                            }
+                            a.button{
+                                display: block;
+                                width:100%;
+                                margin-bottom: 6px;
+                                font-size: 0.9em;
+                            }
+                        }
+                    }
+
+                    #employers{
+                        position: relative;
+                        max-width: 360px;
+                        height: 250px;
+                        width:100%;
+                        margin: auto;
+                        background-position: center center;
+                        background-image: url('./images/employers_bg.jpg');
+                        background-size: cover;
+
+                        > h1{
+                            position: absolute;
+                            top:20px;
+                            left:20px;
+                            font-size: 2em;
+                            font-weight: normal;
+                            font-family: $headerfont;
+                            color: $siteDarkRed1;
+                            margin:0;
+                            letter-spacing: 1px;
+                            position: relative;
+                            margin-bottom: 23px;
+                        }
+
+                        a.button{
+                            position: absolute;
+                            bottom:22px;
+                            left:0;
+                            right:0;
+                            display: block;
+                            width:85%;
+                            margin:auto;
+                            margin-bottom: 6px;
+                            font-size: 0.9em;
+                        }
+                    }
+                }
+            }
+        }
+
+        #psalms{
+            padding-bottom: 18px;
+            background-image: url('./images/homepage_bg.jpg');
+            background-position: bottom center;
+
+            > h1{
+                font-size: 1.875em;
+                color:#fff;
+                text-transform: uppercase;
+                font-family: $headerfont;
+                line-height: 1.1em;
+                text-align: center;
+                font-weight: normal;
+                padding-top:44px;
+                max-width: 425px;
+                margin-bottom: 32px;
+                letter-spacing: 1px;
+                width:90%;
+                margin:auto;
+            }
+
+            h2{
+                font-size: 1.125em;
+                color:#fff;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: normal;
+            }
+
+            .desc{
+                padding:12px;
+                text-align: center;
+                font-size: 1em;
+                color:#fff;
+                font-family: $navregularfont;
+                max-width: 475px;
+                margin:auto;
+            }
+        }
+    }
+
+
+    footer.main{
+        .innerwrapper{
+            padding-top:25px;
+            padding-bottom:25px;
+            font-family: $navregularfont;
+
+            a.phone, a.fax{
+                display: block;
+                padding-bottom: 15px;
+                text-decoration: none;
+                color:$siteTextColor;
+            }
+            
+            
+
+            .copyright{
+                padding-bottom: 15px;
+                width:90%;
+                margin:auto;
+            }
+
+            .credits{
+                padding-bottom: 15px;
+
+                a{
+                    color:$siteGray1;
+                }
+            }
+
+            text-align: center;
+            font-size: 0.8125em;
+        }
+    }
+}
+
+@media only screen and (min-width: 48em) {
+    #wrapper{
+        header.main{
+            .innerwrapper{
+                #mobilemenubtn{
+                    width:390px;
+                    span.label{
+                        display: inline-block;
+                        font-size: 1.125em;
+                        text-transform: uppercase;
+                        font-family: $navregularfont;
+                        margin-right:25px;
+
+                        svg.icon{
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 20px;
+                            position: relative;
+                            top:-2px;
+                        }
+                    }
+                }
+
+                nav.main.active{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .nav, .login, .account{
+                        width:45%;
+                    }
+
+                    .nav{
+                        order:2;
+
+                        a.button{
+                            display: none;
+                        }
+                    }
+
+                    .login, .account{
+                        order:1;
+                        border-right:1px solid white;
+                        padding-right:4%;
+                        display: block;
+
+                        border-top:0;
+                        
+                        .btn_cancellogin{display: none;}
+                    }
+
+                    .account{
+                        padding-top:0;
+                        margin-top:0;
+                    }
+
+
+
+                }
+            }
+        }
+        #frontpage{
+            #heroimage{
+                height: 420px;
+
+                .overlay{
+                    text-align: center;
+                    h2{
+                        margin-top:30px;
+                        img{
+                            width:500px; 
+                        }
+                    }
+
+                    h3{
+                        font-size: 1.75em;
+                        margin-bottom: 35px;
+
+                        img{
+                            top:-6px;
+                        }
+                    }
+
+                    a.button{
+                        display: inline-block;
+                        margin-right: 20px;
+                    }
+                }
+
+                .slider{
+                    height: 420px;
+
+                    div{
+                        height: 420px;
+                    }
+                }
+            }
+
+            #intro{
+                .innerwrapper{
+                    padding:36px;
+                    padding-bottom: 54px;
+                    > h1{
+                        font-size: 3.125em;
+                    }
+
+                    .content{
+                        font-size: 1.125em;
+                        margin-bottom: 35px;
+
+                        img{
+                            width:187px;
+                        }
+                    }
+
+                    .socialmedia{
+                        text-align: left;
+                        font-size: 1.375em;
+
+                        ul{
+                            display: inline-flex;
+                            margin:0;
+                            position: relative;
+                            top:8px;
+                        }
+                    }
+                }
+            }
+
+            #featuredjobs{
+                min-height: 857px;
+                padding-bottom: 70px;
+                
+                .innerwrapper{
+                    width:92%;
+                    max-width: 916px;
+                    margin: auto;
+                    
+                    > h1{
+                        font-size: 3.125em;
+                    }
+                    
+                    .mobilelisting{
+                        display: none;
+                    }
+                    
+                    table{
+                        width:100%;
+                        display: table;
+                        background-color: #fff;
+                        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+                        
+                        thead{
+                            tr{
+                                th{
+                                    height:55px;
+                                    background-color: $siteDarkRed1;
+                                    color: #fff;
+                                    font-family: $navregularfont;
+                                    text-transform: uppercase;
+                                    text-align: left;
+                                    padding:7px;
+                                    padding-left:25px;
+                                    font-weight: normal;
+                                }
+                            }
+                        }
+                        
+                        tbody{
+                            tr{
+                                td{
+                                    height: 55px;
+                                    color: $siteGray1;
+                                    padding:7px;
+                                    padding-left:25px;
+                                    
+                                    a{
+                                        color:$siteRed1;
+                                        text-decoration: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                    .calltoaction{
+                        width:100%;
+                        margin-top: 44px;
+                        display: flex;
+                        justify-content: space-between;                    
+                        a{
+                            padding:5px;
+                            padding-left:35px;
+                            padding-right:35px;
+                        }
+                    }
+                }
+            }
+
+            #featuredcandidates{
+                .innerwrapper{
+                    padding:36px;
+                    padding-top: 40px;
+                    > h1{
+                        font-size: 3.125em;
+                    }
+
+                    .content{
+                        padding-bottom: 0;
+                        font-size: 1.125em;
+                        img{
+                            float:left;
+                            margin-right:30px;
+                            margin-bottom:20px;
+                        }
+
+                        a.button{
+                            display: inline-block;
+                            max-width: 250px;
+                        }
+                    }
+                }
+            }
+
+            #psalms{
+                height: 302px;
+
+                h1{
+                    font-size: 2.5em;
+                    width:500px;
+                    margin: auto;
+                    margin-bottom: 10px;
+                }
+
+                h2{
+                    font-size: 1.375em;
+                }
+
+                .desc{
+                    width:623px;
+                    font-size: 1.25em;
+                    margin: auto;
+                    position: relative;
+                    top:35px;
+                }
+            }
+        }
+
+        #subpage{
+            article.page{
+                > header{
+                    h1{
+                        font-size: 2.85em;
+                        bottom: 40px;
+                    }
+                }
+                .innerwrapper{
+                    .content{
+                        
+                        .joblisting{
+                            margin-top:25px;
+                            margin-bottom:25px;
+                            
+                            > select{
+                                margin:0;
+                                position: relative;
+                                top:23px;
+                                z-index: 10000;
+                            }
+                            .dataTables_filter, .dataTables_paginate, .dataTables_info{
+                                margin-bottom: 10px;
+                                font-size: 0.9em;
+                            }
+
+                            .dynatable-search{
+                                float: right;
+                                width: 38%;
+                                text-align: right;
+
+                                input{
+                                    display: inline-block;
+                                    width: auto;
+                                }
+                            }
+                            table{
+                                width:100%;
+                                display: table;
+                                background-color: #fff;
+                                
+                                
+                                thead{
+                                    tr{
+                                        th{
+                                            height:25px;
+                                            background-color: $siteDarkRed1;
+                                            color: #fff;
+                                            font-family: $navregularfont;
+                                            text-transform: uppercase;
+                                            text-align: left;
+                                            padding:7px;
+                                            padding-left:10px;
+                                            font-weight: normal;
+                                            font-size: 0.85em;
+                                        }
+                                    }
+                                }
+                                
+                                tbody{
+                                    tr{
+                                        td{
+                                            height: 25px;
+                                            color: $siteGray1;
+                                            padding:7px;
+                                            padding-left:10px;
+                                            font-size: 0.95em;
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                            }
+                        }
+                        
+                        #jobdetails{
+                            #jobid{
+                                font-size:1em;
+                            }
+                            .calltoaction{
+                                margin-top:30px;
+                                display: flex;
+                                justify-content: flex-start;
+                                
+                                a{
+                                    margin-right: 25px;
+                                }
+                                
+                            }
+                        }
+                        #myaccount{
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            .dashboardsection{
+                                width:50%;
+                                
+                                #application_newapp{
+                                    a{
+                                        text-align: center;
+                                        .fa{float:none;vertical-align: middle;}
+                                        
+                                        span{
+                                            padding-top:5px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            #appliedjobs, #mydetails, #pastjobs{
+                                width:100%;
+                                
+                                
+                            }
+                            
+                            #mydetails{
+                                #applicant_details{
+                                    position: relative;
+                                    a.button{
+                                        position: absolute;
+                                        top:0;
+                                        right:0;
+                                        font-size: 1em;
+                                        height: auto;  
+                                        line-height: 1.2em;
+                                        padding:10px;                              
+                                    }
+                                }
+                            }
+
+                        }
+                        #application_app, #skillsheet_app, #joborderform_app{
+                            #breadcrumbs{
+                                justify-content: space-around;
+                                .button{
+                                    display: block;
+                                    height: 100%;
+                                    width:110px;
+                                }
+                            }
+                            .legend{
+                                margin-top:25px;
+                                ul{
+                                    margin:0;
+                                    padding:0;
+                                    list-style: none;
+                                    text-align: center;
+                                    li{
+                                        display: inline-block;
+                                        margin-right:25px;
+                                    }
+                                    
+                                    li:last-of-type{
+                                        margin-right: 0;
+                                    }
+                                }
+                            }
+                            #application_pages{
+                                > section{
+                                    .formwrapper{
+                                        .otherskills_container{
+                                            .otherskill{
+                                                border:0;
+                                                .delete_btn{
+                                                    top:40px;
+                                                    font-size:1.5em;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .skillsheets{
+                                    .formwrapper{
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        flex-wrap: wrap;
+                                        margin-bottom: 35px;
+
+                                        > h2{
+                                            width: 100%;
+                                        }
+
+                                        > div{
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            flex-wrap: wrap;
+                                            > .row, > .rowgroup{
+                                                width:45%;
+                                                margin-right: 5%;
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                                .formwrapper{
+                                    .row{
+                                        display: flex;
+                                        justify-content: space-between;
+
+                                        .formrow{
+                                            width:100%;
+                                        }
+                                    }
+
+                                    .row.three-col{
+                                        .formrow{
+                                            width:32%;
+                                        }
+                                    }
+                                    
+                                    .row.four-col{
+                                        .formrow{
+                                            width: 23%;
+                                        }
+                                    }
+
+                                    .row.two-col{
+                                        .formrow{
+                                            width:48%;
+                                        }
+                                    }
+
+                                    .education, .workhistory{
+                                        >h2{
+                                            font-size: 1.85em;
+                                        }
+                                        margin-bottom: 65px;
+                                    }
+
+                                    .education:last-of-type{
+                                        margin-bottom: 0;
+                                    }
+
+                                    #btn_addedu, #btn_addwork, #btn_addskill{
+                                        max-width: 280px;
+                                        margin: auto;
+                                    }
+
+
+                                }
+
+                                #educationinfo_page, #workhistoryinfo_page{
+                                    padding-bottom: 20px;
+                                }
+
+                                #submit_application, #submit_skillsheet{
+                                   max-width: 280px;
+                                   margin: auto;
+                               }
+                            }
+
+                            #application_controls{
+                                position: relative;
+
+                                .button{
+                                    padding-left:20px;
+                                    padding-right:20px;
+                                }
+                            }
+                        }
+                        
+                        #loginform{
+                            .form{
+                                .formrow.buttons{
+                                    display: flex;
+                                    justify-content: space-between;
+                                    
+                                    a, input{
+                                        width: 32%;
+                                    }       
+                                }
+                            }
+                        }
+                        
+                        #register, #forgotpassword{
+                            #registerform, #forgotpasswordform{
+                                .form{
+                                    .row{
+                                        display: flex;
+                                        justify-content: space-between;
+
+                                        .formrow{
+                                            width:100%;
+                                        }
+                                    }
+
+                                    .row.three-col{
+                                        .formrow{
+                                            width:32%;
+                                        }
+                                    }
+
+                                    .row.two-col{
+                                        .formrow{
+                                            width:48%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    #sidebar{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+        footer.main{
+            .innerwrapper{
+                position: relative;
+                width:89%;
+                margin:auto;
+                padding:0;
+                height: 92px;
+
+                .phone{
+                    position: absolute;
+                    top:36px;
+                    left:0;
+                }
+                
+                .fax{
+                    position: absolute;
+                    top:36px;
+                    left: 130px;
+                }
+
+                .rcol{
+                    position: absolute;
+                    top:25px;
+                    right:0;
+                    width:72%;
+                    line-height: 1.4em;
+
+                    .copyright, .credits{
+                        text-align: right;
+                        padding:0;
+                        width:100%;
+                    }
+
+                    .npasmall{
+                        float: right;
+                        position: relative;
+                        top:-10px;
+                        margin-left:15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 68.75em) {
+    #wrapper{
+        header.main{
+            .innerwrapper{
+                max-width: 1100px;
+                margin:auto;
+                position: relative;
+                height: 100%;
+
+                #mobilemenubtn{
+                    display: none;
+                }
+
+                a.phone {
+                    display: block;
+                    position: absolute;
+                    top: .75em;
+                    right: 1.5em;
+                    font-family: "aleoregular";
+                    &:hover {
+                        color: $siteRed1;
+                    }
+                }
+
+                #signinbtn, #accountbtn{
+                    display: block;
+                    width:250px;
+                    height: 123px;
+                    line-height: 130px;
+                    text-align: center;
+                    position: absolute;
+                    top:0;
+                    right:0;
+                    cursor: pointer;
+
+                    font-size: 1.125em;
+                    text-transform: uppercase;
+                    font-family: $navregularfont;
+
+                    svg.icon{
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 20px;
+                        position: relative;
+                        top:-2px;
+                    }
+                }
+
+                #signinbtn.active, #accountbtn.active{
+                    background-color: $siteRed1;
+                    color:#fff;
+                }
+
+                .account{
+                    display: none;
+                }
+
+                .account.active{
+                    display: block;
+                    position: absolute;
+                    top:122px;
+                    right:0;
+                    width:83%;
+                    max-width: 916px;
+                    min-height: 250px;
+                    background-color: $siteRed1;
+
+                    z-index: 10000;
+
+                    #accountdashboard{
+                        font-family: $navregularfont;
+                        padding:28px;
+                        display: flex;
+                        justify-content: flex-start;
+
+                        .dashboardsection{
+                            width: 252px;
+                            margin-right: 36px;
+                            margin-bottom: 20px;
+                            h1{
+                                color:#fff;
+                                font-size: 1em;
+                                text-transform: none;
+                                font-weight: normal;
+                                font-size: 1.5em;
+                                margin:0;
+                                letter-spacing: 0.5px;
+                                margin-bottom: 20px;
+                            }
+
+                            #application_status, .skillsheet, .noresults{
+                                font-family: $bodyfont;
+                                font-size:0.66em;
+                                color:#fff;
+                                height: 42px;
+                                margin-bottom: 20px;
+                                cursor: pointer;
+
+                                a{
+                                    color:#fff;
+                                }
+
+                                .application_details, .skillsheet_detail{
+                                    display: inline-block;
+                                    width:78%;
+                                    text-transform: none;
+                                    font-size: 1.45em;
+                                }
+
+                                img{
+                                    float:left;
+                                    margin-right: 10px;
+                                }
+
+                                span{
+                                    float:right;
+                                    font-weight: bold;
+                                }
+
+                                span.clear{
+                                    clear:both;
+                                }
+
+                                .progressbartrack{
+                                    height: 7px;
+                                    background-color: rgba(255,255,255,0.4);
+                                    width:100%;
+                                    margin-top: 5px;
+
+                                    .progressbar{
+                                        background-color: #fff;
+                                        height: 7px;
+                                        display: inline-block;
+                                        float:left;
+                                    }
+                                }
+
+                            }
+                            
+                            .noresults{
+                                text-transform: none;
+                                cursor: default;
+                            }
+                        }
+
+                        #account_controls{
+                            width:201px;
+                            margin-top: 35px;
+                            position: absolute;
+                            bottom:50px;
+                            right:30px;
+                            a.button{
+                                display: block;
+                                width:100%;
+                                margin-bottom: 10px;
+                                text-decoration: none;
+                            }
+                            a.altbutton{
+                                background-color: $siteRed2;
+                            }
+
+                            a:last-of-type{
+                                margin-top:35px;
+                            }
+                        }
+                    }
+                }
+
+                .login{
+                    display: none;
+                }
+
+                .login.active{
+                    display: block;
+                    position: absolute;
+                    top:122px;
+                    right:0;
+                    width:310px;
+                    min-height: 350px;
+                    background-color: $siteRed1;
+                    z-index: 10000;
+                    
+                    .btn_cancellogin{display: none;}
+                    
+                    #errors, .invalidPwd{
+                        text-align: center;
+                        padding:10px;
+                        background-color:$siteGreen1;
+                        border:3px solid $siteRed1;
+                        margin-bottom: 12px;
+                        color:#fff;
+                        font-weight: bold;
+                        display: block;
+                        
+                    }
+
+                    #loginform{
+                        width:242px;
+                        margin:auto;
+                        padding-top:35px;
+
+                        .loading{
+                            display: block;
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(221, 56, 57, 0.67);
+                            background-image: url('./images/loading.gif');
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                        }
+                        
+                        
+
+                        
+
+                        .formrow{
+                            margin-bottom: 25px;
+                            label{
+                                color:#fff;
+                                text-transform: uppercase;
+                                display: block;
+                                margin-bottom: 10px;
+                                letter-spacing: 1.3px;
+                                font-family: $navregularfont;
+                                font-size: 1.125em;
+                            }
+
+                            a{
+                                font-size: 0.8em;
+                                text-decoration: none;
+                                color:#fff;
+                                font-family: $bodyfont;
+                            }
+
+                            .button{
+                                width:100%;
+                                font-size: 1.125em;
+                                margin-bottom: 12px;
+                                font-family: $navregularfont;
+                            }
+
+                            input[type=text], input[type=password]{
+                                outline: none;
+                                border:0;
+                                height: 40px;
+                                width:100%;
+                                padding:6px;
+                                box-sizing: border-box;
+                            }
+                        }
+
+                        .formrow.links{
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+
+                }
+
+                nav.main{
+                    display: block;
+                    position: absolute;
+                    top:0px;
+                    left:250px;
+
+
+
+
+                    #mobile_login_btn, a.phone{
+                        display: none;
+                    }
+
+                    ul{
+                        margin:0;
+                        padding:0;
+                        width:505px;
+                        height: 122px;
+                        display: flex;
+                        justify-content: space-between;
+                        list-style: none;
+                        font-size: 1.125em;
+
+                        li{
+                            position: relative;
+                            transition: all 0.3s ease;
+                            a, span{
+                                color:$siteDarkRed1;
+                                text-decoration: none;
+                                transition: all 0.3s ease;
+                                display: block;
+                                height: 122px;
+                                line-height: 122px;
+                                cursor: pointer;
+                                padding-left:20px;
+                                padding-right:20px;
+                            }
+
+                            a:hover, span:hover{
+                                background-color: $siteRed1;
+                                color:#fff;
+                            }
+
+                            ul.sub-menu{
+                                position: absolute;
+                                top:122px;
+                                left:0;
+                                z-index: 10000000;
+                                background-color: $siteRed1;
+                                color:#fff;
+                                height: auto;
+                                display: block;
+                                padding-top:25px;
+                                padding-bottom:9px;
+                                width:235px;
+                                display: none;
+                                visibility: hidden;
+
+                                li{
+                                    display: block;
+                                    margin-bottom: 0px;  
+                                    padding-top:10px;                                  
+                                    padding-bottom:10px;                                  
+                                    a, span{
+                                        line-height: normal;
+                                        height: auto;
+                                        color:#fff;
+                                        text-transform: none;
+                                    }
+                                }
+                                
+                                li:hover{
+                                    background-color: $siteRed2;
+                                    a, span{
+                                        background-color: transparent;
+                                        color:#fff;
+                                    }
+                                }
+                            }
+                        }
+
+                        font-family: $navregularfont;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+
+        #frontpage{
+
+            #intro{
+                .innerwrapper{
+                    max-width: 1100px;
+                    margin:auto;
+
+
+                    > h1, .content{
+                        max-width: 1002px;
+                        margin:auto;
+                    }
+
+                    > h1{
+                        margin-bottom: 34px;
+                    }
+
+                    .content{
+                        padding-bottom: 40px;
+                        margin-bottom: 35px;
+                    }
+
+                    .socialmedia{
+                        max-width: 1002px;
+                        margin:auto;
+                    }
+                }
+            }
+
+            #featuredjobs{
+                min-height: 856px;
+                height:auto;
+                padding-bottom:25px;
+            }
+
+            #featuredcandidates{
+                .innerwrapper{
+                    max-width: 1100px;
+                    margin:auto;
+                    padding-left:0;
+                    padding-right:0;
+
+                    .content{
+                        margin:0;
+                        padding-left:40px;
+                        padding-right:40px;
+
+                        img{
+                            margin-right: 60px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #subpage{
+            article.page{
+                > header{
+                    margin-bottom: 45px;
+                }
+                .innerwrapper{
+                    max-width: 1100px;
+                    margin:auto;
+                    padding:0;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 45px;
+
+                    > .content{
+                        width:760px;
+                        margin-bottom: 0;
+
+                         a.button{
+                            display:inline-block;
+                            max-width: 200px;
+                            margin-bottom: 6px;
+                            font-size: 0.875em;
+                        }
+                    }
+
+                    #sidebar{
+                        width: 300px;
+                        display: block;
+
+                        #latestjobs{
+
+                        }
+                    }
+                }
+            }
+        }
+
+        footer.main{
+            max-width: 1002px;
+            margin:auto;
+            width:100%;
+        }
+
+    }
+}
+
